@@ -1,8 +1,8 @@
 import MovieList from "components/MovieList/MovieList";
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
-import { fetchTrending } from '../shared/api/fetchTrending'
-import { PaginationStyled } from "shared/api/Pagination/Pagination.styled";
+import { fetchTrending } from '../shared/api/fetchApi'
+import { PaginationStyled } from "shared/Pagination/Pagination.styled";
 
 
 const Home = () => {
@@ -17,17 +17,17 @@ const Home = () => {
     useEffect(() => {
         fetchTrending(currentPage)
             .then(data => {
- 
+
                 setTrends(data.results);
                 setTotalPages(data.total_pages);
 
             })
             .catch(error => console.log(error));
-    }, [ currentPage, setSearchQuery]);
+    }, [currentPage, setSearchQuery]);
 
     const handlePageClick = e => {
         setSearchQuery({ page: e.selected + 1 });
-    };    
+    };
 
     return (
         <main>

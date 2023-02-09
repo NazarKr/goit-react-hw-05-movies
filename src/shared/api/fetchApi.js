@@ -17,3 +17,11 @@ export const fetchMovies = async (query, page,) => {
   );
   return response.data;
 };
+
+export const fetchMoviesDetails = async (id) => {
+  const response = await axios.get(
+    `${URL}/movie/${id}?api_key=${API_KEY}&language=en-US`
+  );
+  return response.data;
+};
+

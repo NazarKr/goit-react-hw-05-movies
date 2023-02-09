@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import MovieItem from "components/MovieItem/MovieItem";
 
-import { fetchMovies } from "shared/api/fetchTrending";
-import { PaginationStyled } from "shared/api/Pagination/Pagination.styled";
+import { fetchMovies } from "shared/api/fetchApi";
+import { PaginationStyled } from "shared/Pagination/Pagination.styled";
 import { Container, CardWrapper } from "../components/MovieList/MovieList.styled";
 import { toast } from 'react-toastify';
 
@@ -59,7 +59,7 @@ const Movies = () => {
         setSearchMovie({ search: input, page: e.selected + 1 });
     };
 
-    
+
     return (
         <main>
             <h2>Our mission</h2>
@@ -68,7 +68,7 @@ const Movies = () => {
                 value={input}
                 onSearchInput={onSearchInput}
             />
-            
+
             <Container>
                 {movieFound.map(movie => (
                     <CardWrapper key={movie.id}>
