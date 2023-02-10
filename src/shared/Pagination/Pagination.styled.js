@@ -7,7 +7,8 @@ export const PaginationStyled = styled(ReactPaginate)`
   list-style: none;
   justify-content: center;
   margin-top: 16px;
-  font-size: 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
   font-weight: 700;
 
   @media (max-width: 479.98px) {
@@ -15,7 +16,7 @@ export const PaginationStyled = styled(ReactPaginate)`
   }
 
   & li {
-    color: ${p => '#E9EAEC'};
+    color: ${p => 'black'};
 
     transition: color 250ms linear;
 

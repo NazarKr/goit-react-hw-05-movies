@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useEffect, useState, Suspense } from "react";
+import { useLocation, useParams, Link, Outlet } from "react-router-dom";
 import { fetchMoviesDetails } from "shared/api/fetchApi";
 import { BackLink } from "shared/BackLinkButton/BackLink";
 import imageplaceholder from '../assets/images/noposter.jpg';
@@ -40,10 +40,24 @@ const MovieDetails = ({ movie }) => {
                             alt={`${movieItem.title}`} />
                         <div>
                             <p>{movieItem.title}</p>
-                            <p>{movieItem.genres.map(genre => genre.name).join(', ')}</p>                           
+                            <p>{movieItem.genres.map(genre => genre.name).join(', ')}</p>
+                            <p>{movieItem.overview}</p>
                         </div>
                     </div>
                 )}
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="cast">Cast</Link>
+                        </li>
+                        <li>
+                            <Link to="reviews">Reviews</Link>
+                        </li>
+                    </ul>
+                    <Suspense fallback={<div>Loading subpage...</div>}>
+                        <Outlet />
+                    </Suspense>
+                </div>
             </div>
         </main>
     );
