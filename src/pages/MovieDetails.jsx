@@ -1,18 +1,16 @@
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useLocation, useParams, Link, Outlet } from "react-router-dom";
 import { fetchMoviesDetails } from "shared/api/fetchApi";
 import { BackLink } from "shared/BackLinkButton/BackLink";
 import imageplaceholder from '../assets/images/noposter.jpg';
 import NotFound from "./NotFound";
 
-
 const MovieDetails = ({ movie }) => {
     const [movieItem, setMovieItem] = useState(null);
     const [error, setError] = useState(false);
     const location = useLocation();
     const params = useParams();
-    const backLinkHref = location.state?.from ?? "/movies";
-    
+    const backLinkHref = useRef(location.state?.from ?? '/');
 
     useEffect(() => {
         fetchMoviesDetails(params.movieId)
@@ -26,7 +24,7 @@ const MovieDetails = ({ movie }) => {
 
     return (
         <main>
-            <BackLink to={backLinkHref}>Back to products</BackLink>
+            <BackLink to={backLinkHref.current}>Back to products</BackLink>
             <div>
                 {error && <NotFound />}
 

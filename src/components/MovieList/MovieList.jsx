@@ -6,7 +6,6 @@ import { Container, CardWrapper } from "./MovieList.styled";
 
 const MovieList = ({ trends }) => {
     const location = useLocation();
-    // const shouldRenderLoadMoreButton = items.length > 0 && !loading;
 
     return (
        <Container>
