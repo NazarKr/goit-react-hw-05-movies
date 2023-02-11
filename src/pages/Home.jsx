@@ -17,7 +17,6 @@ const Home = () => {
     useEffect(() => {
         fetchTrending(currentPage)
             .then(data => {
-
                 setTrends(data.results);
                 setTotalPages(data.total_pages);
 
@@ -32,10 +31,8 @@ const Home = () => {
     return (
         <main>
             <h1>Trending today</h1>
-            {/* {loading && <p>loaad....</p>} */}
             <ul>
                 <MovieList trends={trends} />
-
             </ul>
 
             {totalPages > 1 && (

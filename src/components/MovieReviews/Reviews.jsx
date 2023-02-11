@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMoviesReviews } from "shared/api/fetchApi";
 import NotFound from "../../pages/NotFound";
+import { ReviewsUl, ReviewsInfoText, ReviewsInfoP } from "./Reviews.styled";
 
 const Reviews = () => {
     const [movieReviews, setMovieReviews] = useState([]);
@@ -22,21 +23,24 @@ const Reviews = () => {
 
     return (
         <section>
-            <h2>Our mission</h2>
+            <h2>Review</h2>
 
             {error && <NotFound />}
 
             <div>
-                <ul>
+                {movieReviews.length ?( 
+                <ReviewsUl>
                     {movieReviews.map(review => (
                         <li key={review.id}>
                             <div>
-                                <p>{review.author}</p>
-                                <p>{review.content}</p>
+                                <ReviewsInfoText>{review.author}</ReviewsInfoText>
+                                <ReviewsInfoP>{review.content}</ReviewsInfoP>
                             </div>
                         </li>
                     ))}
-                </ul>
+                    </ReviewsUl>) : (
+                    <p>No results</p>
+                )}
 
             </div>
 

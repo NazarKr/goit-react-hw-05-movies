@@ -8,10 +8,9 @@ export const SharedLayout = () => {
         <Container>
             <Header>
                 <Logo>
-                    <span role="img" aria-label="computer icon">
-                        💻
-                    </span>{" "}
-                    MovieTeca
+                    <Link to="/"  role="img" aria-label="computer icon">
+                        💻 MovieTeca
+                    </Link>
                 </Logo>
                 <nav>
                     <Link to="/" end>Home</Link>

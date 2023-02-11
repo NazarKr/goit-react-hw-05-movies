@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { fetchMoviesCast } from "shared/api/fetchApi";
 import NotFound from "../../pages/NotFound";
 import imageplaceholder from '../../assets/images/noposter.jpg';
+import { CastTitle, CastImg, CastInfoSpan, CastInfoText, CastkUl, Castkli } from "./Cast.styled";
 
 const Mission = () => {
     const [movieCast, setMovieCast] = useState([]);
     const [error, setError] = useState(false);
-    // const location = useLocation();
     const params = useParams();
 
     useEffect(() => {
@@ -22,21 +22,14 @@ const Mission = () => {
 
     return (
         <section>
-            <h2>Our mission</h2>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, nesciunt
-                veniam. Excepturi itaque, voluptates fugiat perspiciatis quo saepe! Iste
-                eaque porro eveniet error dicta, modi ipsum hic quis minima inventore.
-            </p>
-
+            <CastTitle>Actors from the movie</CastTitle>
             {error && <NotFound />}
-
             <div>
-                <ul>
-                    {movieCast.map(actor => (
-                        <li key={actor.cast_id}>
-                            <img
-                                width={200}
+                {movieCast.length ? (
+                <CastkUl>
+                    {movieCast.slice(0, 12).map(actor => (
+                        <Castkli key={actor.cast_id}>
+                            <CastImg
                                 src={
                                 actor.profile_path
                                     ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
@@ -44,13 +37,17 @@ const Mission = () => {
                             }
                                 alt={`${actor.name}`} />
                             <div>
-                                <p>{actor.character}</p>
-                                <p>{actor.name}</p>
+                                <CastInfoText>{actor.name}</CastInfoText>
+                                <p>Character: <br/>
+                                    <CastInfoSpan>{actor.character}</CastInfoSpan></p>
+
                             </div>
-                        </li>
+                        </Castkli>
                     ))}
-                </ul>
-                
+                </CastkUl>
+                ) : (
+                    <p>No results</p>
+                )}
             </div>
 
         </section>
