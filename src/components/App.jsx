@@ -1,8 +1,10 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import Spinner from "shared/Loader/Spinner";
 
 const Home = lazy(() => import("../pages/Home"));
 const Movies = lazy(() => import("../pages/Movies"));
@@ -15,6 +17,9 @@ const NotFound = lazy(() => import("../pages/NotFound"));
 const App = () => {
   return (
     <>
+      <Suspense fallback={<div><Spinner /></div>}>
+        {/* <Outlet /> */}
+
       <Routes>
         <Route path="/" element={<SharedLayout />} >
           <Route index element={<Home />} />
@@ -26,7 +31,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
       <ToastContainer />
     </>
   );

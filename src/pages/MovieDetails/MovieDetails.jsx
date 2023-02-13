@@ -5,7 +5,7 @@ import { BackLink } from "shared/BackLinkButton/BackLink";
 import Spinner from "shared/Loader/Spinner";
 import imageplaceholder from '../../assets/images/noposter.jpg';
 import NotFound from "../NotFound";
-import { ContainerMovie, MovieImg, MovieInfo, MovieInfoText, MovieInfoSpan, MovieNav, MovieLink } from "./MovieDetails.styled"
+import { ContainerMovie, MovieImg, MovieInfo, MovieNameH2, MovieInfoText, MovieInfoSpan, MovieNav, MovieLink } from "./MovieDetails.styled"
 
 const MovieDetails = () => {
     const [movieItem, setMovieItem] = useState(null);
@@ -40,10 +40,11 @@ const MovieDetails = () => {
                             }
                             alt={`${movieItem.title}`} />
                         <MovieInfo>
-                            <MovieInfoText>Title: <MovieInfoSpan>{movieItem.title}</MovieInfoSpan></MovieInfoText>
+                            <MovieNameH2>{movieItem.title}</MovieNameH2>
                             <MovieInfoText>Genre:<MovieInfoSpan>{movieItem.genres.map(genre => genre.name).join(', ')}</MovieInfoSpan></MovieInfoText>
                             <MovieInfoText>Release date: <MovieInfoSpan>{movieItem.release_date}</MovieInfoSpan></MovieInfoText>
                             <MovieInfoText>Popularity: <MovieInfoSpan>{movieItem.popularity}</MovieInfoSpan></MovieInfoText>
+                            <MovieInfoText>Original Title: <MovieInfoSpan>{movieItem.original_title}</MovieInfoSpan></MovieInfoText>
                             <MovieInfoText>About:<MovieInfoSpan>{movieItem.overview}</MovieInfoSpan></MovieInfoText>
                         </MovieInfo>
                     </ContainerMovie>

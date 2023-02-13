@@ -7,14 +7,20 @@ export const ContainerMovie = styled.div`
 `;
 
 export const MovieImg = styled.img`
-  width: 400px;
-  height: 500px;
+  width: 350px;
+  height: 450px;
   object-fit: cover;
   border-radius: 10px;
 `;
 
 export const MovieInfo = styled.div`
   padding: 10px 20px;
+`;
+
+export const MovieNameH2 = styled.h2`
+  font-size: ${theme.fontSizes.xxl};
+  font-weight: ${theme.fontWeights.bold};
+  padding: 6px;
 `;
 
 export const MovieInfoText = styled.p`

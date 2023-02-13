@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px);
-  gap: 16px;
+  gap: 24px;
 `;
 
 export const CardWrapper = styled.li`

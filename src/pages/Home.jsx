@@ -31,9 +31,7 @@ const Home = () => {
     return (
         <main>
             <h1>Trending today</h1>
-            <ul>
-                <MovieList trends={trends} />
-            </ul>
+            <MovieList trends={trends} />
 
             {totalPages > 1 && (
                 <PaginationStyled
