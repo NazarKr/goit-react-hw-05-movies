@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Spinner from "shared/Loader/Spinner";
+import LangContext from "shared/hooks/langContext";
 
 const Home = lazy(() => import("../pages/Home"));
 const Movies = lazy(() => import("../pages/Movies"));
@@ -16,7 +16,7 @@ const NotFound = lazy(() => import("../pages/NotFound"));
 
 const App = () => {
   return (
-    <>
+    <LangContext>
       <Suspense fallback={<div><Spinner /></div>}>
         {/* <Outlet /> */}
 
@@ -34,7 +34,7 @@ const App = () => {
         </Routes>
       </Suspense>
       <ToastContainer />
-    </>
+    </LangContext>
   );
 };
 
